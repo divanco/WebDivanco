@@ -31,7 +31,11 @@ app.use(morgan('dev'));
 
 // ✅ CONFIGURAR CORS PRIMERO
 app.use(cors({
-  origin: 'https://web-divanco.vercel.app',
+  origin: [
+    'https://web-divanco.vercel.app',
+    'https://web-divanco-904goemjg-divancos-projects.vercel.app',
+    'http://localhost:5173',
+  ],
   methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
