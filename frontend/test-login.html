@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quick Login Test</title>
+</head>
+<body>
+    <script>
+        // Hacer login automáticamente
+        fetch('http://localhost:3001/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: 'admin@divanco.com',
+                password: 'admin123456'
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Login response:', data);
+            if (data.token) {
+                // Guardar en localStorage para simular autenticación
+                localStorage.setItem('auth', JSON.stringify({
+                    token: data.token,
+                    user: data.user
+                }));
+                console.log('Token guardado, redirigiendo...');
+                // Redirigir a la aplicación
+                window.location.href = 'http://localhost:5173/admin/blog';
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    </script>
+</body>
+</html>

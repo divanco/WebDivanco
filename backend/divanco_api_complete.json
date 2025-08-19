@@ -1,0 +1,1084 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2025-08-01T22:50:00.000Z",
+  "__export_source": "insomnia.desktop.app:v2023.5.8",
+  "resources": [
+    {
+      "_id": "req_00000000000000001",
+      "parentId": "fld_auth",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/auth/register",
+      "name": "Registrar Usuario",
+      "description": "Crear nuevo usuario en el sistema",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Juan Pérez\",\n  \"email\": \"juan@example.com\",\n  \"password\": \"password123\",\n  \"role\": \"user\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1690000000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00000000000000002",
+      "parentId": "fld_auth",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/auth/login",
+      "name": "Iniciar Sesión",
+      "description": "Autenticar usuario y obtener token JWT",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"email\": \"juan@example.com\",\n  \"password\": \"password123\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1689999000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00000000000000003",
+      "parentId": "fld_categories",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/categories",
+      "name": "Obtener Todas las Categorías",
+      "description": "Listar todas las categorías del showroom",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "limit",
+          "value": "10",
+          "description": "Número de categorías por página",
+          "disabled": true
+        },
+        {
+          "name": "page",
+          "value": "1",
+          "description": "Número de página",
+          "disabled": true
+        },
+        {
+          "name": "featured",
+          "value": "true",
+          "description": "Solo categorías destacadas",
+          "disabled": true
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1689998000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00000000000000004",
+      "parentId": "fld_categories",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/categories/homepage",
+      "name": "Categorías para Homepage",
+      "description": "Obtener categorías para mostrar en la página principal",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1689997000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00000000000000005",
+      "parentId": "fld_categories",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/categories/ceramicos",
+      "name": "Obtener Categoría por Slug",
+      "description": "Obtener una categoría específica por su slug",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1689996000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00000000000000006",
+      "parentId": "fld_categories",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/categories",
+      "name": "Crear Categoría",
+      "description": "Crear nueva categoría (requiere autenticación admin)",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Cerámicos\",\n  \"description\": \"Materiales cerámicos para construcción\",\n  \"isHomepage\": true,\n  \"isFeatured\": true\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.authToken }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1689995000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00000000000000007",
+      "parentId": "fld_categories",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/categories/1/upload-image",
+      "name": "Subir Imagen a Categoría",
+      "description": "Subir imagen para una categoría (requiere autenticación admin)",
+      "method": "POST",
+      "body": {
+        "mimeType": "multipart/form-data",
+        "params": [
+          {
+            "name": "image",
+            "value": "",
+            "description": "Archivo de imagen",
+            "type": "file"
+          }
+        ]
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.authToken }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1689994000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00000000000000008",
+      "parentId": "fld_subcategories",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/subcategories",
+      "name": "Obtener Todas las Subcategorías",
+      "description": "Listar todas las subcategorías",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "limit",
+          "value": "10",
+          "description": "Número de subcategorías por página",
+          "disabled": true
+        },
+        {
+          "name": "page",
+          "value": "1",
+          "description": "Número de página",
+          "disabled": true
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1689993000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00000000000000009",
+      "parentId": "fld_subcategories",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/subcategories/featured",
+      "name": "Subcategorías Destacadas",
+      "description": "Obtener subcategorías destacadas",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "limit",
+          "value": "6",
+          "description": "Número de subcategorías destacadas",
+          "disabled": true
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1689992000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00000000000000010",
+      "parentId": "fld_subcategories",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/subcategories/category/ceramicos",
+      "name": "Subcategorías por Categoría",
+      "description": "Obtener subcategorías de una categoría específica",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1689991000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00000000000000011",
+      "parentId": "fld_subcategories",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/subcategories/ceramicos/porcelanato",
+      "name": "Obtener Subcategoría por Slug",
+      "description": "Obtener subcategoría específica por categoría y slug",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1689990000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00000000000000012",
+      "parentId": "fld_subcategories",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/subcategories",
+      "name": "Crear Subcategoría",
+      "description": "Crear nueva subcategoría (requiere autenticación admin)",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Porcelanato\",\n  \"description\": \"Porcelanato de alta calidad\",\n  \"categoryId\": 1,\n  \"isFeatured\": true,\n  \"isNew\": false\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.authToken }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1689989000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00000000000000013",
+      "parentId": "fld_projects",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/projects",
+      "name": "Obtener Todos los Proyectos",
+      "description": "Listar todos los proyectos arquitectónicos",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "limit",
+          "value": "10",
+          "description": "Número de proyectos por página",
+          "disabled": true
+        },
+        {
+          "name": "page",
+          "value": "1",
+          "description": "Número de página",
+          "disabled": true
+        },
+        {
+          "name": "projectType",
+          "value": "residencial",
+          "description": "Filtrar por tipo de proyecto",
+          "disabled": true
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1689988000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00000000000000014",
+      "parentId": "fld_projects",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/projects/featured",
+      "name": "Proyectos Destacados",
+      "description": "Obtener proyectos destacados",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "limit",
+          "value": "3",
+          "description": "Número de proyectos destacados",
+          "disabled": true
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1689987000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00000000000000015",
+      "parentId": "fld_projects",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/projects/year/2024",
+      "name": "Proyectos por Año",
+      "description": "Obtener proyectos de un año específico",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1689986000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00000000000000016",
+      "parentId": "fld_projects",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/projects/casa-moderna-2024",
+      "name": "Obtener Proyecto por Slug",
+      "description": "Obtener proyecto específico por su slug",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1689985000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00000000000000017",
+      "parentId": "fld_projects",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/projects",
+      "name": "Crear Proyecto",
+      "description": "Crear nuevo proyecto (requiere autenticación admin)",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"title\": \"Casa Moderna 2024\",\n  \"description\": \"Proyecto residencial con diseño contemporáneo\",\n  \"location\": \"Buenos Aires, Argentina\",\n  \"year\": 2024,\n  \"projectType\": \"residencial\",\n  \"stage\": \"terminado\",\n  \"isFeatured\": true,\n  \"area\": \"250 m²\",\n  \"client\": \"Cliente Privado\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.authToken }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1689984000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00000000000000018",
+      "parentId": "fld_blog",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/blog",
+      "name": "Obtener Posts del Blog",
+      "description": "Listar todos los posts del blog",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "limit",
+          "value": "10",
+          "description": "Número de posts por página",
+          "disabled": true
+        },
+        {
+          "name": "page",
+          "value": "1",
+          "description": "Número de página",
+          "disabled": true
+        },
+        {
+          "name": "status",
+          "value": "published",
+          "description": "Estado del post",
+          "disabled": true
+        },
+        {
+          "name": "featured",
+          "value": "true",
+          "description": "Solo posts destacados",
+          "disabled": true
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1689983000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00000000000000019",
+      "parentId": "fld_blog",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/blog/featured",
+      "name": "Posts Destacados",
+      "description": "Obtener posts destacados del blog",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "limit",
+          "value": "3",
+          "description": "Número de posts destacados",
+          "disabled": true
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1689982000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00000000000000020",
+      "parentId": "fld_blog",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/blog/recent",
+      "name": "Posts Recientes",
+      "description": "Obtener posts más recientes",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "limit",
+          "value": "5",
+          "description": "Número de posts recientes",
+          "disabled": true
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1689981000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00000000000000021",
+      "parentId": "fld_blog",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/blog/tendencias-arquitectura-2024",
+      "name": "Obtener Post por Slug",
+      "description": "Obtener post específico por su slug",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1689980000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00000000000000022",
+      "parentId": "fld_blog",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/blog",
+      "name": "Crear Post",
+      "description": "Crear nuevo post de blog (requiere autenticación)",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"title\": \"Tendencias en Arquitectura 2024\",\n  \"content\": \"<p>El contenido completo del artículo...</p>\",\n  \"excerpt\": \"Las principales tendencias arquitectónicas para este año\",\n  \"authorId\": 1,\n  \"projectId\": 1,\n  \"tags\": [\"arquitectura\", \"tendencias\", \"2024\"],\n  \"status\": \"published\",\n  \"isFeatured\": true\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.authToken }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1689979000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00000000000000023",
+      "parentId": "fld_subscribers",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/subscribers/subscribe",
+      "name": "Suscribirse al Newsletter",
+      "description": "Suscribirse al newsletter del blog",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"email\": \"usuario@example.com\",\n  \"name\": \"Juan Pérez\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1689978000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00000000000000024",
+      "parentId": "fld_subscribers",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/subscribers/unsubscribe/TOKEN_EJEMPLO",
+      "name": "Cancelar Suscripción",
+      "description": "Cancelar suscripción usando token",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1689977000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00000000000000025",
+      "parentId": "fld_subscribers",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/subscribers/stats",
+      "name": "Estadísticas de Suscriptores",
+      "description": "Obtener estadísticas de suscriptores (requiere admin)",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.authToken }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1689976000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00000000000000026",
+      "parentId": "fld_subscribers",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/subscribers/list",
+      "name": "Lista de Suscriptores",
+      "description": "Obtener lista de suscriptores (requiere admin)",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "status",
+          "value": "active",
+          "description": "Estado de suscriptores (active/inactive)",
+          "disabled": true
+        },
+        {
+          "name": "limit",
+          "value": "50",
+          "description": "Número de suscriptores por página",
+          "disabled": true
+        },
+        {
+          "name": "search",
+          "value": "",
+          "description": "Buscar por email o nombre",
+          "disabled": true
+        }
+      ],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.authToken }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1689975000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00000000000000027",
+      "parentId": "fld_search",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/search",
+      "name": "Búsqueda Global",
+      "description": "Búsqueda general en todo el contenido",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "q",
+          "value": "cerámicos",
+          "description": "Término de búsqueda"
+        },
+        {
+          "name": "type",
+          "value": "all",
+          "description": "Tipo de contenido (all/categories/subcategories/projects/blog)",
+          "disabled": true
+        },
+        {
+          "name": "limit",
+          "value": "20",
+          "description": "Número de resultados",
+          "disabled": true
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1689974000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00000000000000028",
+      "parentId": "fld_search",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/search/suggestions",
+      "name": "Sugerencias de Búsqueda",
+      "description": "Obtener sugerencias para autocompletar",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "q",
+          "value": "cer",
+          "description": "Término parcial de búsqueda"
+        },
+        {
+          "name": "limit",
+          "value": "10",
+          "description": "Número de sugerencias",
+          "disabled": true
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1689973000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_00000000000000029",
+      "parentId": "fld_search",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "url": "{{ _.baseUrl }}/search/advanced",
+      "name": "Búsqueda Avanzada",
+      "description": "Búsqueda con filtros avanzados",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "q",
+          "value": "arquitectura",
+          "description": "Término de búsqueda"
+        },
+        {
+          "name": "projectTypes",
+          "value": "residencial,comercial",
+          "description": "Tipos de proyecto (separados por coma)",
+          "disabled": true
+        },
+        {
+          "name": "years",
+          "value": "2023,2024",
+          "description": "Años (separados por coma)",
+          "disabled": true
+        },
+        {
+          "name": "tags",
+          "value": "tendencias,diseño",
+          "description": "Tags del blog (separados por coma)",
+          "disabled": true
+        },
+        {
+          "name": "sortBy",
+          "value": "relevance",
+          "description": "Ordenar por (relevance/date/name)",
+          "disabled": true
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1689972000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_auth",
+      "parentId": "wrk_divanco",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "name": "🔐 Autenticación",
+      "description": "Endpoints relacionados con autenticación y autorización",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1690000000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_categories",
+      "parentId": "wrk_divanco",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "name": "🏗️ Categorías",
+      "description": "Gestión de categorías del showroom de materiales",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1689000000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_subcategories",
+      "parentId": "wrk_divanco",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "name": "🔧 Subcategorías",
+      "description": "Gestión de subcategorías y productos específicos",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1688000000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_projects",
+      "parentId": "wrk_divanco",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "name": "🏛️ Proyectos",
+      "description": "Portfolio de proyectos arquitectónicos",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1687000000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_blog",
+      "parentId": "wrk_divanco",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "name": "📝 Blog",
+      "description": "Sistema de blog y artículos",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1686000000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_subscribers",
+      "parentId": "wrk_divanco",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "name": "📮 Suscriptores",
+      "description": "Gestión de suscriptores al newsletter",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1685000000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_search",
+      "parentId": "wrk_divanco",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "name": "🔍 Búsqueda",
+      "description": "Sistema de búsqueda y sugerencias",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1684000000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_divanco",
+      "parentId": null,
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "name": "Divanco API - Estudio de Arquitectura",
+      "description": "API completo para la plataforma web del estudio de arquitectura Divanco. Incluye showroom de materiales, portfolio de proyectos, blog y sistema de suscriptores.",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "env_divanco_base",
+      "parentId": "wrk_divanco",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "name": "Base Environment",
+      "data": {
+        "baseUrl": "http://localhost:3001/api",
+        "authToken": ""
+      },
+      "dataPropertyOrder": {
+        "&": ["baseUrl", "authToken"]
+      },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1690000000000,
+      "_type": "environment"
+    },
+    {
+      "_id": "env_divanco_production",
+      "parentId": "env_divanco_base",
+      "modified": 1690000000000,
+      "created": 1690000000000,
+      "name": "Production",
+      "data": {
+        "baseUrl": "https://api.divanco.com/api"
+      },
+      "dataPropertyOrder": {
+        "&": ["baseUrl"]
+      },
+      "color": "#ff6b6b",
+      "isPrivate": false,
+      "metaSortKey": 1690000000000,
+      "_type": "environment"
+    }
+  ]
+}
