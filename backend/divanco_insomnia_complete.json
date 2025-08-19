@@ -1,0 +1,956 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2025-08-17T20:00:00.000Z",
+  "__export_source": "divanco-backend",
+  "resources": [
+    {
+      "_id": "wrk_divanco",
+      "_type": "workspace",
+      "name": "Divanco API - Complete",
+      "description": "Colección completa de rutas para el backend de Divanco - Estudio de Arquitectura"
+    },
+    {
+      "_id": "env_base",
+      "_type": "environment",
+      "parentId": "wrk_divanco",
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://localhost:3001/api",
+        "auth_token": ""
+      }
+    },
+    
+   {
+      "_id": "folder_auth",
+      "_type": "request_group",
+      "parentId": "wrk_divanco",
+      "name": "🔐 Authentication"
+    },
+    {
+      "_id": "req_login",
+      "_type": "request",
+      "parentId": "folder_auth",
+      "name": "Login",
+      "method": "POST",
+      "url": "{{ base_url }}/auth/login",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"email\": \"admin@divanco.com\",\n  \"password\": \"admin123\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ]
+    },
+    {
+      "_id": "req_register",
+      "_type": "request",
+      "parentId": "folder_auth",
+      "name": "Register",
+      "method": "POST",
+      "url": "{{ base_url }}/auth/register",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Usuario Test\",\n  \"email\": \"test@example.com\",\n  \"password\": \"password123\",\n  \"role\": \"user\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ]
+    },
+    {
+      "_id": "req_recover_password",
+      "_type": "request",
+      "parentId": "folder_auth",
+      "name": "Recover Password",
+      "method": "POST",
+      "url": "{{ base_url }}/auth/recover-password",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"email\": \"test@example.com\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ]
+    },
+    {
+      "_id": "req_reset_password",
+      "_type": "request",
+      "parentId": "folder_auth",
+      "name": "Reset Password",
+      "method": "POST",
+      "url": "{{ base_url }}/auth/reset-password",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"token\": \"reset_token_here\",\n  \"newPassword\": \"newpassword123\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ]
+    },
+
+    {
+      "_id": "folder_projects",
+      "_type": "request_group",
+      "parentId": "wrk_divanco",
+      "name": "🏗️ Projects"
+    },
+    
+    
+    {
+      "_id": "folder_projects_public",
+      "_type": "request_group",
+      "parentId": "folder_projects",
+      "name": "📋 Public Routes"
+    },
+    {
+      "_id": "req_get_all_projects",
+      "_type": "request",
+      "parentId": "folder_projects_public",
+      "name": "Get All Projects",
+      "method": "GET",
+      "url": "{{ base_url }}/projects?limit=12&page=1&publicOnly=true",
+      "headers": []
+    },
+    {
+      "_id": "req_get_project_by_slug",
+      "_type": "request",
+      "parentId": "folder_projects_public",
+      "name": "Get Project by Slug",
+      "method": "GET",
+      "url": "{{ base_url }}/projects/casa-moderna-2024",
+      "headers": []
+    },
+    {
+      "_id": "req_get_projects_by_year",
+      "_type": "request",
+      "parentId": "folder_projects_public",
+      "name": "Get Projects by Year",
+      "method": "GET",
+      "url": "{{ base_url }}/projects/year/2024",
+      "headers": []
+    },
+    {
+      "_id": "req_get_featured_projects",
+      "_type": "request",
+      "parentId": "folder_projects_public",
+      "name": "Get Featured Projects",
+      "method": "GET",
+      "url": "{{ base_url }}/projects/featured",
+      "headers": []
+    },
+    {
+      "_id": "req_get_slider_projects",
+      "_type": "request",
+      "parentId": "folder_projects_public",
+      "name": "Get Slider Projects",
+      "method": "GET",
+      "url": "{{ base_url }}/projects/slider",
+      "headers": []
+    },
+    {
+      "_id": "req_search_projects",
+      "_type": "request",
+      "parentId": "folder_projects_public",
+      "name": "Search Projects",
+      "method": "GET",
+      "url": "{{ base_url }}/projects/search?q=casa&projectType=residencial&year=2024",
+      "headers": []
+    },
+    {
+      "_id": "req_get_filter_options",
+      "_type": "request",
+      "parentId": "folder_projects_public",
+      "name": "Get Filter Options",
+      "method": "GET",
+      "url": "{{ base_url }}/projects/filter-options",
+      "headers": []
+    },
+    {
+      "_id": "req_get_search_suggestions",
+      "_type": "request",
+      "parentId": "folder_projects_public",
+      "name": "Get Search Suggestions",
+      "method": "GET",
+      "url": "{{ base_url }}/projects/suggestions?q=casa",
+      "headers": []
+    },
+
+    {
+      "_id": "folder_projects_admin",
+      "_type": "request_group",
+      "parentId": "folder_projects",
+      "name": "🔒 Admin Routes"
+    },
+    {
+      "_id": "req_create_project",
+      "_type": "request",
+      "parentId": "folder_projects_admin",
+      "name": "Create Project",
+      "method": "POST",
+      "url": "{{ base_url }}/projects",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"title\": \"Casa Moderna Test\",\n  \"description\": \"Proyecto de prueba\",\n  \"projectType\": \"residencial\",\n  \"year\": 2024,\n  \"etapa\": \"construccion\",\n  \"kuulaUrl\": \"https://kuula.co/share/test\",\n  \"showInSlider\": true,\n  \"isPublic\": true,\n  \"isFeatured\": false,\n  \"tags\": [\"moderno\", \"sostenible\"]\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ auth_token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_update_project",
+      "_type": "request",
+      "parentId": "folder_projects_admin",
+      "name": "Update Project",
+      "method": "PUT",
+      "url": "{{ base_url }}/projects/1",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"title\": \"Casa Moderna Actualizada\",\n  \"description\": \"Proyecto actualizado\",\n  \"isFeatured\": true\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ auth_token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_delete_project",
+      "_type": "request",
+      "parentId": "folder_projects_admin",
+      "name": "Delete Project",
+      "method": "DELETE",
+      "url": "{{ base_url }}/projects/1",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ auth_token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_upload_project_media",
+      "_type": "request",
+      "parentId": "folder_projects_admin",
+      "name": "Upload Project Media",
+      "method": "POST",
+      "url": "{{ base_url }}/projects/1/media",
+      "body": {
+        "mimeType": "multipart/form-data",
+        "params": [
+          {
+            "name": "file",
+            "type": "file",
+            "fileName": "test-image.jpg"
+          },
+          {
+            "name": "type",
+            "value": "render"
+          },
+          {
+            "name": "description",
+            "value": "Render principal del proyecto"
+          },
+          {
+            "name": "isMain",
+            "value": "true"
+          }
+        ]
+      },
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ auth_token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_toggle_slider_image",
+      "_type": "request",
+      "parentId": "folder_projects_admin",
+      "name": "Toggle Slider Image",
+      "method": "PUT",
+      "url": "{{ base_url }}/projects/1/media/1/slider-toggle",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ auth_token }}"
+        }
+      ]
+    },
+
+  
+    {
+      "_id": "folder_blog",
+      "_type": "request_group",
+      "parentId": "wrk_divanco",
+      "name": "📝 Blog"
+    },
+    {
+      "_id": "req_get_all_blog_posts",
+      "_type": "request",
+      "parentId": "folder_blog",
+      "name": "Get All Blog Posts",
+      "method": "GET",
+      "url": "{{ base_url }}/blog",
+      "headers": []
+    },
+    {
+      "_id": "req_get_featured_blog_posts",
+      "_type": "request",
+      "parentId": "folder_blog",
+      "name": "Get Featured Blog Posts",
+      "method": "GET",
+      "url": "{{ base_url }}/blog/featured",
+      "headers": []
+    },
+    {
+      "_id": "req_get_recent_blog_posts",
+      "_type": "request",
+      "parentId": "folder_blog",
+      "name": "Get Recent Blog Posts",
+      "method": "GET",
+      "url": "{{ base_url }}/blog/recent",
+      "headers": []
+    },
+    {
+      "_id": "req_get_blog_post_by_slug",
+      "_type": "request",
+      "parentId": "folder_blog",
+      "name": "Get Blog Post by Slug",
+      "method": "GET",
+      "url": "{{ base_url }}/blog/tendencias-arquitectura-2024",
+      "headers": []
+    },
+    {
+      "_id": "req_create_blog_post",
+      "_type": "request",
+      "parentId": "folder_blog",
+      "name": "Create Blog Post (Admin)",
+      "method": "POST",
+      "url": "{{ base_url }}/blog",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"title\": \"Nuevas tendencias en arquitectura\",\n  \"content\": \"Contenido del artículo...\",\n  \"excerpt\": \"Resumen del artículo\",\n  \"isFeatured\": true,\n  \"isPublished\": true,\n  \"tags\": [\"tendencias\", \"arquitectura\"]\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ auth_token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_update_blog_post",
+      "_type": "request",
+      "parentId": "folder_blog",
+      "name": "Update Blog Post (Admin)",
+      "method": "PUT",
+      "url": "{{ base_url }}/blog/1",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"title\": \"Título actualizado\",\n  \"content\": \"Contenido actualizado...\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ auth_token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_delete_blog_post",
+      "_type": "request",
+      "parentId": "folder_blog",
+      "name": "Delete Blog Post (Admin)",
+      "method": "DELETE",
+      "url": "{{ base_url }}/blog/1",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ auth_token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_upload_blog_image",
+      "_type": "request",
+      "parentId": "folder_blog",
+      "name": "Upload Blog Image (Admin)",
+      "method": "POST",
+      "url": "{{ base_url }}/blog/1/upload-image",
+      "body": {
+        "mimeType": "multipart/form-data",
+        "params": [
+          {
+            "name": "image",
+            "type": "file",
+            "fileName": "blog-image.jpg"
+          }
+        ]
+      },
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ auth_token }}"
+        }
+      ]
+    },
+
+  
+    {
+      "_id": "folder_categories",
+      "_type": "request_group",
+      "parentId": "wrk_divanco",
+      "name": "📂 Categories"
+    },
+    {
+      "_id": "req_get_all_categories",
+      "_type": "request",
+      "parentId": "folder_categories",
+      "name": "Get All Categories",
+      "method": "GET",
+      "url": "{{ base_url }}/categories",
+      "headers": []
+    },
+    {
+      "_id": "req_get_homepage_categories",
+      "_type": "request",
+      "parentId": "folder_categories",
+      "name": "Get Homepage Categories",
+      "method": "GET",
+      "url": "{{ base_url }}/categories/homepage",
+      "headers": []
+    },
+    {
+      "_id": "req_get_category_by_slug",
+      "_type": "request",
+      "parentId": "folder_categories",
+      "name": "Get Category by Slug",
+      "method": "GET",
+      "url": "{{ base_url }}/categories/arquitectura-residencial",
+      "headers": []
+    },
+    {
+      "_id": "req_create_category",
+      "_type": "request",
+      "parentId": "folder_categories",
+      "name": "Create Category (Admin)",
+      "method": "POST",
+      "url": "{{ base_url }}/categories",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Arquitectura Comercial\",\n  \"description\": \"Proyectos de espacios comerciales\",\n  \"isActive\": true,\n  \"showOnHomepage\": true\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ auth_token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_update_category",
+      "_type": "request",
+      "parentId": "folder_categories",
+      "name": "Update Category (Admin)",
+      "method": "PUT",
+      "url": "{{ base_url }}/categories/1",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Arquitectura Comercial Actualizada\",\n  \"description\": \"Descripción actualizada\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ auth_token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_delete_category",
+      "_type": "request",
+      "parentId": "folder_categories",
+      "name": "Delete Category (Admin)",
+      "method": "DELETE",
+      "url": "{{ base_url }}/categories/1",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ auth_token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_upload_category_image",
+      "_type": "request",
+      "parentId": "folder_categories",
+      "name": "Upload Category Image (Admin)",
+      "method": "POST",
+      "url": "{{ base_url }}/categories/1/upload-image",
+      "body": {
+        "mimeType": "multipart/form-data",
+        "params": [
+          {
+            "name": "image",
+            "type": "file",
+            "fileName": "category-image.jpg"
+          }
+        ]
+      },
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ auth_token }}"
+        }
+      ]
+    },
+
+    
+    {
+      "_id": "folder_subcategories",
+      "_type": "request_group",
+      "parentId": "wrk_divanco",
+      "name": "📁 Subcategories"
+    },
+    {
+      "_id": "req_get_all_subcategories",
+      "_type": "request",
+      "parentId": "folder_subcategories",
+      "name": "Get All Subcategories",
+      "method": "GET",
+      "url": "{{ base_url }}/subcategories",
+      "headers": []
+    },
+    {
+      "_id": "req_get_featured_subcategories",
+      "_type": "request",
+      "parentId": "folder_subcategories",
+      "name": "Get Featured Subcategories",
+      "method": "GET",
+      "url": "{{ base_url }}/subcategories/featured",
+      "headers": []
+    },
+    {
+      "_id": "req_get_subcategories_by_category",
+      "_type": "request",
+      "parentId": "folder_subcategories",
+      "name": "Get Subcategories by Category",
+      "method": "GET",
+      "url": "{{ base_url }}/subcategories/category/arquitectura-residencial",
+      "headers": []
+    },
+    {
+      "_id": "req_get_subcategory_by_slug",
+      "_type": "request",
+      "parentId": "folder_subcategories",
+      "name": "Get Subcategory by Slug",
+      "method": "GET",
+      "url": "{{ base_url }}/subcategories/arquitectura-residencial/casas-modernas",
+      "headers": []
+    },
+    {
+      "_id": "req_create_subcategory",
+      "_type": "request",
+      "parentId": "folder_subcategories",
+      "name": "Create Subcategory (Admin)",
+      "method": "POST",
+      "url": "{{ base_url }}/subcategories",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Oficinas Modernas\",\n  \"description\": \"Espacios de oficina contemporáneos\",\n  \"categoryId\": 1,\n  \"isActive\": true,\n  \"isFeatured\": false\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ auth_token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_update_subcategory",
+      "_type": "request",
+      "parentId": "folder_subcategories",
+      "name": "Update Subcategory (Admin)",
+      "method": "PUT",
+      "url": "{{ base_url }}/subcategories/1",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Oficinas Modernas Actualizadas\",\n  \"isFeatured\": true\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ auth_token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_delete_subcategory",
+      "_type": "request",
+      "parentId": "folder_subcategories",
+      "name": "Delete Subcategory (Admin)",
+      "method": "DELETE",
+      "url": "{{ base_url }}/subcategories/1",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ auth_token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_upload_subcategory_image",
+      "_type": "request",
+      "parentId": "folder_subcategories",
+      "name": "Upload Subcategory Image (Admin)",
+      "method": "POST",
+      "url": "{{ base_url }}/subcategories/1/upload-image",
+      "body": {
+        "mimeType": "multipart/form-data",
+        "params": [
+          {
+            "name": "image",
+            "type": "file",
+            "fileName": "subcategory-image.jpg"
+          }
+        ]
+      },
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ auth_token }}"
+        }
+      ]
+    },
+
+
+    {
+      "_id": "folder_users",
+      "_type": "request_group",
+      "parentId": "wrk_divanco",
+      "name": "👥 Users (Admin Only)"
+    },
+    {
+      "_id": "req_get_all_users",
+      "_type": "request",
+      "parentId": "folder_users",
+      "name": "Get All Users",
+      "method": "GET",
+      "url": "{{ base_url }}/users",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ auth_token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_get_user_by_id",
+      "_type": "request",
+      "parentId": "folder_users",
+      "name": "Get User by ID",
+      "method": "GET",
+      "url": "{{ base_url }}/users/1",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ auth_token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_create_user",
+      "_type": "request",
+      "parentId": "folder_users",
+      "name": "Create User",
+      "method": "POST",
+      "url": "{{ base_url }}/users",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Nuevo Usuario\",\n  \"email\": \"nuevo@example.com\",\n  \"password\": \"password123\",\n  \"role\": \"editor\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ auth_token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_update_user",
+      "_type": "request",
+      "parentId": "folder_users",
+      "name": "Update User",
+      "method": "PUT",
+      "url": "{{ base_url }}/users/1",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Usuario Actualizado\",\n  \"role\": \"admin\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ auth_token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_delete_user",
+      "_type": "request",
+      "parentId": "folder_users",
+      "name": "Delete User",
+      "method": "DELETE",
+      "url": "{{ base_url }}/users/1",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ auth_token }}"
+        }
+      ]
+    },
+
+   
+    {
+      "_id": "folder_subscribers",
+      "_type": "request_group",
+      "parentId": "wrk_divanco",
+      "name": "📧 Subscribers"
+    },
+    {
+      "_id": "req_subscribe",
+      "_type": "request",
+      "parentId": "folder_subscribers",
+      "name": "Subscribe (Public)",
+      "method": "POST",
+      "url": "{{ base_url }}/subscribers/subscribe",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"email\": \"usuario@example.com\",\n  \"name\": \"Usuario Test\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ]
+    },
+    {
+      "_id": "req_unsubscribe",
+      "_type": "request",
+      "parentId": "folder_subscribers",
+      "name": "Unsubscribe (Public)",
+      "method": "GET",
+      "url": "{{ base_url }}/subscribers/unsubscribe/unsubscribe_token_here",
+      "headers": []
+    },
+    {
+      "_id": "req_generate_unsubscribe_token",
+      "_type": "request",
+      "parentId": "folder_subscribers",
+      "name": "Generate Unsubscribe Link (Public)",
+      "method": "POST",
+      "url": "{{ base_url }}/subscribers/unsubscribe-link",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"email\": \"usuario@example.com\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ]
+    },
+    {
+      "_id": "req_get_subscriber_stats",
+      "_type": "request",
+      "parentId": "folder_subscribers",
+      "name": "Get Subscriber Stats (Admin)",
+      "method": "GET",
+      "url": "{{ base_url }}/subscribers/stats",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ auth_token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_get_all_subscribers",
+      "_type": "request",
+      "parentId": "folder_subscribers",
+      "name": "Get All Subscribers (Admin)",
+      "method": "GET",
+      "url": "{{ base_url }}/subscribers/list",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ auth_token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_export_active_subscribers",
+      "_type": "request",
+      "parentId": "folder_subscribers",
+      "name": "Export Active Subscribers (Admin)",
+      "method": "GET",
+      "url": "{{ base_url }}/subscribers/export",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ auth_token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_delete_subscriber",
+      "_type": "request",
+      "parentId": "folder_subscribers",
+      "name": "Delete Subscriber (Admin)",
+      "method": "DELETE",
+      "url": "{{ base_url }}/subscribers/1",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ auth_token }}"
+        }
+      ]
+    },
+
+    
+    {
+      "_id": "folder_search",
+      "_type": "request_group",
+      "parentId": "wrk_divanco",
+      "name": "🔍 Search"
+    },
+    {
+      "_id": "req_global_search",
+      "_type": "request",
+      "parentId": "folder_search",
+      "name": "Global Search",
+      "method": "GET",
+      "url": "{{ base_url }}/search?q=casa&type=projects",
+      "headers": []
+    },
+    {
+      "_id": "req_search_suggestions",
+      "_type": "request",
+      "parentId": "folder_search",
+      "name": "Get Search Suggestions",
+      "method": "GET",
+      "url": "{{ base_url }}/search/suggestions?q=casa",
+      "headers": []
+    },
+    {
+      "_id": "req_advanced_search",
+      "_type": "request",
+      "parentId": "folder_search",
+      "name": "Advanced Search",
+      "method": "GET",
+      "url": "{{ base_url }}/search/advanced?q=casa&filters={\"projectType\":\"residencial\",\"year\":2024}",
+      "headers": []
+    },
+
+   
+    {
+      "_id": "folder_utilities",
+      "_type": "request_group",
+      "parentId": "wrk_divanco",
+      "name": "🔧 Utilities"
+    },
+    {
+      "_id": "req_api_info",
+      "_type": "request",
+      "parentId": "folder_utilities",
+      "name": "API Info",
+      "method": "GET",
+      "url": "{{ base_url }}/",
+      "headers": []
+    },
+    {
+      "_id": "req_debug_test_creation",
+      "_type": "request",
+      "parentId": "folder_utilities",
+      "name": "Debug Test Creation",
+      "method": "GET",
+      "url": "{{ base_url }}/projects/debug/test-creation",
+      "headers": []
+    },
+    {
+      "_id": "req_debug_create_project",
+      "_type": "request",
+      "parentId": "folder_utilities",
+      "name": "Debug Create Project",
+      "method": "POST",
+      "url": "{{ base_url }}/projects/debug/create",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"title\": \"Proyecto Debug\",\n  \"description\": \"Proyecto para testing\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ]
+    }
+  ]
+}

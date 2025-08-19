@@ -1,0 +1,123 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2025-07-30T00:00:00.000Z",
+  "__export_source": "boilerplate-backend",
+  "resources": [
+    {
+      "_id": "wrk_1",
+      "_type": "workspace",
+      "name": "divanco",
+      "description": "Colección de rutas para el backend divanco"
+    },
+    {
+      "_id": "env_1",
+      "_type": "environment",
+      "parentId": "wrk_1",
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://localhost:3001"
+      }
+    },
+    {
+      "_id": "req_1",
+      "_type": "request",
+      "parentId": "wrk_1",
+      "name": "Login",
+      "method": "POST",
+      "url": "{{ base_url }}/auth/login",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"username\": \"testuser@example.com\",\n  \"password\": \"testpass123\"\n}"
+      }
+    },
+    {
+      "_id": "req_2",
+      "_type": "request",
+      "parentId": "wrk_1",
+      "name": "Register",
+      "method": "POST",
+      "url": "{{ base_url }}/auth/register",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"username\": \"testuser@example.com\",\n  \"password\": \"testpass123\"\n}"
+      }
+    },
+    {
+      "_id": "req_3",
+      "_type": "request",
+      "parentId": "wrk_1",
+      "name": "Recover Password",
+      "method": "POST",
+      "url": "{{ base_url }}/auth/recover-password",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"username\": \"testuser@example.com\"\n}"
+      }
+    },
+    {
+      "_id": "req_4",
+      "_type": "request",
+      "parentId": "wrk_1",
+      "name": "Reset Password",
+      "method": "POST",
+      "url": "{{ base_url }}/auth/reset-password",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"token\": \"<token_recuperacion>\",\n  \"password\": \"newpass123\"\n}"
+      }
+    },
+    {
+      "_id": "req_5",
+      "_type": "request",
+      "parentId": "wrk_1",
+      "name": "Get Users",
+      "method": "GET",
+      "url": "{{ base_url }}/users",
+      "headers": [
+        { "name": "Authorization", "value": "Bearer <token_admin>" }
+      ]
+    },
+    {
+      "_id": "req_6",
+      "_type": "request",
+      "parentId": "wrk_1",
+      "name": "Create User (admin)",
+      "method": "POST",
+      "url": "{{ base_url }}/users",
+      "headers": [
+        { "name": "Authorization", "value": "Bearer <token_admin>" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"username\": \"newuser@example.com\",\n  \"password\": \"newpass123\",\n  \"role\": \"user\"\n}"
+      }
+    },
+    {
+      "_id": "req_7",
+      "_type": "request",
+      "parentId": "wrk_1",
+      "name": "Send Email",
+      "method": "POST",
+      "url": "{{ base_url }}/send-email",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"to\": \"destino@email.com\",\n  \"subject\": \"Test\",\n  \"text\": \"Hola!\"\n}"
+      }
+    },
+    {
+      "_id": "req_8",
+      "_type": "request",
+      "parentId": "wrk_1",
+      "name": "Upload File",
+      "method": "POST",
+      "url": "{{ base_url }}/upload",
+      "body": {
+        "mimeType": "multipart/form-data",
+        "params": [
+          { "name": "file", "value": "<ruta_archivo_local>", "type": "file" }
+        ]
+      }
+    }
+  ]
+}
