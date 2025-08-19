@@ -20,7 +20,7 @@ console.log('🕐 [SERVER] Hora actual Colombia:', new Date().toLocaleString('es
   second: '2-digit'
 }));
 
-// ✅ CARGAR .env ANTES de importar modelos
+
 dotenv.config();
 import './data/models/index.js';
 
