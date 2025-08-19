@@ -29,8 +29,8 @@ export default defineConfig({
     host: true, // Para Docker/containers
     open: true,
     proxy: {
-      '/api': {
-        target: 'http://localhost:3001',
+      '/': {
+        target: 'https://webdivanco.onrender.com',
         changeOrigin: true,
       },
     },
